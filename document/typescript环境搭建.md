@@ -6,3 +6,5 @@
 5、npm i html-webpack-plugin -D
 6、npm i clean-webpack-plugin
 7、npm i webpack-merge -D
+8、启动项目：npm run start
+9、地址：localhost:8080

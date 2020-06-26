@@ -11,7 +11,28 @@
 
 # 静态类型语言，动态类型语言
 1、静态类型语言：在编译阶段确定所有的变量的类型
+class C {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+function add(a, b) {
+  return a.x + a.y + b.x + b.y // 不知道a、b的类型，在运算的时候才可知道
+}
+
 2、动态类型语言：在执行阶段确定所有的变量的类型
+class C {
+  public:
+    iny x;
+    int y; // 在编译阶段可知类型
+  }
+}
+
+int add(C a, C b) {
+  return a.x + a.y + b.x + b.y
+}
 
 对比：
     静态类型语言      动态类型语言
