@@ -6,6 +6,10 @@ import './part1.base/class'
 import './part1.base/fanxing'
 import './part1.base/类型保护'
 import './part1.base/类型推断'
+import './part1.base/类型兼容'
+import './part1.base/高级类型'
+
+
 
 
 

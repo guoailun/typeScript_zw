@@ -40,3 +40,57 @@ int add(C a, C b) {
 立即发现错误          Bug可能隐藏数月甚至数年
 运行时性能好          运行时性能差
 自文档化             可读性差
+
+## 一些关键字
+1、extends
+extends 可以用来继承一个类，也可以用来继承一个 interface，但还可以用来判断有条件类型：
+
+T extends U ? X : Y;
+
+上面的类型意思是，若 T 能够赋值给 U，那么类型是 X，否则为 Y。
+
+举个栗子：
+type Words = 'a'|'b'|"c";
+type W<T> = T extends Words ? true : false;
+type WA = W<'a'>; // -> true
+type WD = W<'d'>; // -> false
+
+
+2、typeof
+在 JS 中 typeof 可以判断一个变量的基础数据类型，在 TS 中，它还有一个作用，就是获取一个变量的声明类型，如果不存在，则获取该类型的推论类型。
+
+举个栗子：
+interface Person {
+  name: string;
+  age: number;
+  location?: string;
+}
+
+const jack: Person = { name: 'jack', age: 100 };
+type Jack = typeof jack; // -> Person
+
+
+3、keyof
+keyof 可以用来取得一个对象接口的所有 key 值
+
+interface Person {
+    name: string;
+    age: number;
+    location?: string;
+}
+
+type K1 = keyof Person; // "name" | "age" | "location"
+type K2 = keyof Person[];  // "length" | "push" | "pop" | "concat" | ...
+type K3 = keyof { [x: string]: Person };  // string | number
+
+4、in
+in 可以遍历枚举类型
+
+type Keys = "a" | "b"
+type Obj =  {
+  [p in Keys]: any
+} 
+// -> { a: any, b: any }
+
+上面 in 遍历 Keys，并为每个值赋予 any 类型。
+
